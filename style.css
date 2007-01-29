@@ -459,7 +459,6 @@ table.system-status-report tr.ok th {
 }
 #header .block-search {
   background-color: transparent;
-  /*float: right;*/
   position: absolute;
   right: 0.2em;
   top: 0;
@@ -650,6 +649,29 @@ html.js fieldset.collapsed legend a {
 }
 #user-login-form ul {
   text-align: left;
+}
+
+/**
+ * Messages.
+ */
+.messages {
+  background-color: #fff;
+  border: 1px solid #f0eacd;
+}
+.preview {
+  background-color: #f9f7ed;
+  border: 1px solid #d0d0d0;
+}
+div.status {
+  color: #9cc32a;
+  border-color: #d2ec87;
+}
+div.error {
+  color: #c52020;
+}
+.form-item input.error, .form-item textarea.error {
+  border: 1px solid #c52020;
+  color: #494949;
 }
 
 /**
