@@ -459,7 +459,10 @@ table.system-status-report tr.ok th {
 }
 #header .block-search {
   background-color: transparent;
-  float: right;
+  /*float: right;*/
+  position: absolute;
+  right: 0.2em;
+  top: 0;
 }
 #header .block-search h2 {
   margin: 0;
@@ -656,6 +659,8 @@ html.js fieldset.collapsed legend a {
   position: absolute;
   left: 0;
   top: 0;
+  z-index:100;
+  width: 100%;
 }
 .to-top {
   background: url(images/link-arrow-up.gif) no-repeat 0% 50%;

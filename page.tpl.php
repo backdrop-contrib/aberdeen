@@ -5,7 +5,7 @@
     <?php print $head ?>
     <?php print $styles ?>
     <?php print $scripts ?>
-	<style type="text/css" media="print">@import "<?php print base_path() . path_to_theme() ?>/print.css";</style>
+    <link rel="stylesheet" href="<?php print base_path() . path_to_theme() ?>/print.css" media="print" />
   </head>
   <body<?php print phptemplate_body_class($sidebar_left, $sidebar_right); ?>>
     <p><a id="top"></a></p>
@@ -63,7 +63,6 @@
           </div><!-- /center -->
           <?php if ($sidebar_right): ?>
           <div id="sidebar-right" class="sidebar">
-            <?php if (!$sidebar_left && $search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
             <?php print $sidebar_right ?>
           </div><!-- /sidebar-right -->
           <?php endif; ?>
@@ -71,7 +70,7 @@
 		
 		<?php if ($sidebar_left): ?>
         <div id="sidebar-left" class="sidebar">
-          <?php if ($search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
+		  <?php if ($search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
           <?php print $sidebar_left ?>
         </div><!-- /sidebar-left -->
         <?php endif; ?>
