@@ -59,7 +59,7 @@
 			<?php print $content ?>
 			<span class="clear"></span>
 			<?php print $feed_icons ?>
-			<p><a href="#top" class="to-top">Back to top</a></p>
+			<p><a href="#top" class="to-top"><?php print t('Back to top'); ?></a></p>
           </div><!-- /center -->
           <?php if ($sidebar_right): ?>
           <div id="sidebar-right" class="sidebar">
