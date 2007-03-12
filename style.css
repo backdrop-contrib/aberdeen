@@ -1,6 +1,6 @@
 /**
  * Aberdeen, for Drupal 5.0
- * by Diego, d.f.lago [at] googlemail [dot] com
+ * Don Diego, d.f.lago [at] googlemail [dot] com
  */
 
 /**
@@ -72,7 +72,7 @@ hr {
   background: #d0d0d0;
 }
 ol {
-  margin: 0.5em 0 1.8em 1.8em;
+  margin: 0.5em 0 1.8em 2.4em;
 }
 ul, quote, code, fieldset {
   margin: .5em 0;
@@ -246,6 +246,9 @@ table .form-button, table .form-submit {
   text-align: left;
   background: #fff url(images/bg-main.gif) repeat-x 0 0;
 }
+#topbar {
+  min-height: 1em;
+}
 #sidebar-left {
   width: 16em;
   margin: 2.2em 1.4em 0 0;
@@ -274,6 +277,8 @@ body.sidebars #content {
 }
 #footer {
   clear: both;
+  width: 68.5em;
+  margin: 0 auto;
   padding-top: 4em;
   text-align: center; 
 }
@@ -281,23 +286,22 @@ body.sidebars #content {
 /**
  * Header Area.
  */
-h1.site-name {
+h1#site-name {
   padding: 0.2em 0 0 0; 
 }
-#header h1.site-name a {
+#header h1#site-name a {
   color: #47494d;
 }
-#header h1.site-name a:hover {
+#header h1#site-name a:hover {
   color: #9cc32a;
   text-decoration: none;
 }
-h1.site-name a img {
+h1#site-name a img {
   border: none;
   float: left;
   margin-top: -0.2em;
-  width: 2.34em;
 }
-h2.slogan {
+h2#site-slogan {
   font: bold 1.1em/1.43em Verdana, sans-serif; 
   padding-top: 0.5em;
 }
@@ -344,11 +348,27 @@ ul.primary-links li.active span, #header ul.primary-links li.active span {
   background: url(images/bg-header-tab-right-active.gif) no-repeat right top;
   color: #555;
 }
-ul.primary-links li.active a:active, #header ul.primary-links li.active a.active {
+ul.primary-links li.active a:active, #header ul.primary-links li.active a.active, #header ul.primary-links li.active a {
   color: #4c4f53;
   background: url(images/bg-header-tab-bottom-active.gif) repeat-x left bottom;
 }
-
+#search-theme-form {
+  background-color: transparent;
+  position: absolute;
+  right: 0.2em;
+  top: 0;
+}
+#search-theme-form h2 {
+  margin: 0;
+  padding: 0;
+  float: left;
+  font: 1em/1.5em Verdana, sans-serif;
+}
+#search-theme-form input {
+  float: left;
+  margin: 0 0 0 0.5em;
+  padding: 0;
+}
 /**
  * Local tasks.
  */
@@ -457,22 +477,20 @@ table.system-status-report tr.ok th {
 .block-region {
   background-color: #fdfd7b;
 }
-#header .block-search {
-  background-color: transparent;
-  position: absolute;
-  right: 0.2em;
-  top: 0;
+#topbar .block {
+  display: block;
+  margin: 0 1em;
 }
-#header .block-search h2 {
-  margin: 0;
-  padding: 0;
-  float: left;
-  font: 1em/1.5em Verdana, sans-serif;
+#topbar .block-region {
+  display: block;
+  margin: 0 0 1em;
+  padding: 0.5em;
 }
-#header .block-search form input {
-  float: left;
-  margin: 0 0 0 0.5em;
-  padding: 0;
+#topbar * {
+  display: inline;
+  line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /**

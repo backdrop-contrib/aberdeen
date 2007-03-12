@@ -11,40 +11,39 @@
     <p><a id="top"></a></p>
     <div id="wrapper-header">
       <div id="header"> 
-        <?php
-		// Prepare header
-		$site_fields = array();
-		if ($site_name) {
-		  $site_fields[] = check_plain($site_name);
-		}
-		$site_title = implode(' ', $site_fields);
-		$site_fields[0] = $site_fields[0];
-		$site_html = implode(' ', $site_fields);
+        <h1 id="site-name"><a href="<?php print $base_path; ?>" title="<?php print t('Home'); ?>">
+	    <?php if ($logo): ?>          
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" id="logo" />
+        <?php endif; ?>	  
+	    <?php print $site_name; ?></a>
+	    </h1>
+	    <?php if (isset($site_slogan)) : ?>
+          <h2 id='site-slogan'>
+            <?php print $site_slogan; ?>
+          </h2>
+        <?php endif; ?> <!-- /logo-name-and-slogan -->
 		
-		if ($logo || $site_title) {
-		  print '<h1 class="site-name"><a href="'. check_url($base_path) .'" title="'. $site_title .'">';
-		  if ($logo) {
-		    print '<img src="'. check_url($logo) .'" alt="'. $site_title .'" id="logo" />';
-		  }
-		  print $site_html .'</a></h1>';
-		}
-		?>
-        <?php if (isset($site_slogan)) : ?>
-          <h2 class="slogan"><?php print $site_slogan; ?></h2>
-        <?php endif; ?>
-        <?php if (isset($primary_links)) : ?>
-          <?php print theme('linksnew', $primary_links, array('class' => 'links primary-links')) ?>
-        <?php endif; ?>
-		<div id="header-block">
-		  <?php print $header; ?>
-		</div>
+		<?php print $search_box; ?>  
+    
+	    <?php if (isset($primary_links)) : ?>
+	      <?php print theme('linksnew', $primary_links, array('class' => 'links primary-links')) ?>
+	    <?php endif; ?>
+	    <?php if (isset($secondary_links)) : ?>
+	      <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')) ?>
+	    <?php endif; ?> <!-- /primary-and-secondary-links -->
       </div><!-- /header -->
     </div><!-- /wrapper-header -->
 
     <div id="wrapper-main"> 
       <div id="main"> 
-        <div id="content"> 
-          <div id="center"> 
+	    <?php if ($header): ?>
+		  <div id="topbar">
+	        <?php print $header; ?>
+		  </div>
+	    <?php endif; ?> 
+		
+        <div id="content">
+          <div id="center">		  
 		    <?php if ($breadcrumb): print $breadcrumb; endif; ?>
 			<?php if ($mission): print '<div id="mission">'. $mission .'</div>'; endif; ?>
 			
@@ -70,8 +69,7 @@
 		
 		<?php if ($sidebar_left): ?>
         <div id="sidebar-left" class="sidebar">
-		  <?php if ($search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
-          <?php print $sidebar_left ?>
+		  <?php print $sidebar_left ?>
         </div><!-- /sidebar-left -->
         <?php endif; ?>
       </div><!-- /main -->
