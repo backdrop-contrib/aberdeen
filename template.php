@@ -81,7 +81,8 @@ function phptemplate_menu_local_tasks() {
   $output = '';
 
   if ($primary = menu_primary_local_tasks()) {
-    $output .= "<ul class=\"tabs primary\">\n". $primary ."</ul>\n";
+    $output .= "<ul class=\"tabs primary\">\n". $primary ."</ul>";
+    $output .= "";
   }
 
   return $output;

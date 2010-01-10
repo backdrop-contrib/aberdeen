@@ -34,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
   font-size: 2.5em;
+  line-height:1;
 }
 h2 {
   font-size: 160%;
@@ -279,7 +280,7 @@ body.sidebars #content {
   clear: both;
   width: 68.5em;
   margin: 0 auto;
-  padding-top: 4em;
+  padding-top: 2em;
   text-align: center; 
 }
 
@@ -365,7 +366,6 @@ ul.primary-links li.active a:active, #header ul.primary-links li.active a.active
   font: 1em/1.5em Verdana, sans-serif;
 }
 #search-theme-form input {
-  float: left;
   margin: 0 0 0 0.5em;
   padding: 0;
 }
@@ -481,6 +481,7 @@ table.system-status-report tr.ok th {
   display: block;
   margin: 0 1em;
 }
+
 #topbar .block-region {
   display: block;
   margin: 0 0 1em;
@@ -705,4 +706,19 @@ div.error {
 .to-top {
   background: url(images/link-arrow-up.gif) no-repeat 0% 50%;
   padding-left: 20px;
+}
+
+/**
+ * TinyMCE fix
+ */
+
+body#tinymce {
+  background:none;
+}
+
+/**
+ * Remove list images on admin tables
+ */
+#center table ul.links li {
+  background:none;
 }

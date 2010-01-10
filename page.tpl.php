@@ -1,3 +1,4 @@
+<?php  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language ?>" lang="<?php print $language ?>">
   <head>
@@ -17,14 +18,16 @@
         <?php endif; ?>	  
 	    <?php print $site_name; ?></a>
 	    </h1>
-	    <?php if (isset($site_slogan)) : ?>
+	    <?php if (!empty($site_slogan)): ?>
           <h2 id='site-slogan'>
             <?php print $site_slogan; ?>
           </h2>
         <?php endif; ?> <!-- /logo-name-and-slogan -->
-		
-		<?php print $search_box; ?>  
-    
+				
+				<?php if ($search_box): ?>
+					<?php print $search_box; ?>
+				<?php endif; ?>
+				
 	    <?php if (isset($primary_links)) : ?>
 	      <?php print theme('linksnew', $primary_links, array('class' => 'links primary-links')) ?>
 	    <?php endif; ?>
