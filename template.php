@@ -1,44 +1,36 @@
 <?php
-/**
- * Sets the body-tag class attribute.
- *
- * Adds 'sidebar-left', 'sidebar-right' or 'sidebars' classes as needed.
- */
-function phptemplate_body_class($sidebar_left, $sidebar_right) {
-  if ($sidebar_left != '' && $sidebar_right != '') {
-    $class = 'sidebars';
-  }
-  else {
-    if ($sidebar_left != '') {
-      $class = 'sidebar-left';
-    }
-    if ($sidebar_right != '') {
-      $class = 'sidebar-right';
-    }
-  }
-
-  if (isset($class)) {
-    print ' class="'. $class .'"';
-  }
-}
+// $Id$
 
 /**
- * Return a themed breadcrumb trail.
- *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- * @return a string containing the breadcrumb output.
+ * Custom Breadcrumb
  */
-function phptemplate_breadcrumb($breadcrumb) {
-  if (!empty($breadcrumb)) {
-    return '<div class="breadcrumb">'. implode(' › ', $breadcrumb) .'</div>';
+function aberdeen_breadcrumb($breadcrumb) {
+  // Determine if we are to display the breadcrumb.
+  $show_breadcrumb = theme_get_setting('aberdeen_breadcrumb');
+  if ($show_breadcrumb == 'yes' || $show_breadcrumb == 'admin' && arg(0) == 'admin') {
+
+    // Return the breadcrumb with separators.
+    if (!empty($breadcrumb)) {
+      $breadcrumb_separator = theme_get_setting('aberdeen_breadcrumb_separator');
+      $trailing_separator = $title = '';
+      if (theme_get_setting('aberdeen_breadcrumb_title')) {
+        $trailing_separator = $breadcrumb_separator;
+        $title = menu_get_active_title();
+      }
+      elseif (theme_get_setting('aberdeen_breadcrumb_trailing')) {
+        $trailing_separator = $breadcrumb_separator;
+      }
+      return '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . "$trailing_separator$title</div>";
+    }
   }
+  // Otherwise, return an empty string.
+  return '';
 }
 
 /**
  * Allow themable wrapping of all comments.
  */
-function phptemplate_comment_wrapper($content, $type = null) {
+function aberdeen_comment_wrapper($content, $type = null) {
   static $node_type;
   if (isset($type)) $node_type = $type;
 
@@ -50,103 +42,70 @@ function phptemplate_comment_wrapper($content, $type = null) {
   }
 }
 
-/**
- * Override or insert PHPTemplate variables into the templates.
- */
-function _phptemplate_variables($hook, $vars) {
-  if ($hook == 'page') {
-
-    if ($secondary = menu_secondary_local_tasks()) {
-      $output = '<span class="clear"></span>';
-      $output .= "<ul class=\"tabs secondary\">\n". $secondary ."</ul>\n";
-      $vars['tabs2'] = $output;
-    }
-
-    // Hook into color.module
-    if (module_exists('color')) {
-      _color_page_alter($vars);
-    }
-    return $vars;
-  }
-  return array();
-}
-
-/**
- * Returns the rendered local tasks. The default implementation renders
- * them as tabs.
- *
- * @ingroup themeable
- */
-function phptemplate_menu_local_tasks() {
-  $output = '';
-
-  if ($primary = menu_primary_local_tasks()) {
-    $output .= "<ul class=\"tabs primary\">\n". $primary ."</ul>";
-    $output .= "";
-  }
-
-  return $output;
-}
-
-/**
- * Override theme_links to include <span> in list.
- */
-function phptemplate_linksnew($links, $attributes = array('class' => 'links')) {
+function aberdeen_links($variables) {
+  $links = $variables['links'];
+  $attributes = $variables['attributes'];
+  $heading = $variables['heading'];
+  global $language_url;
   $output = '';
 
   if (count($links) > 0) {
-    $output = '<ul'. drupal_attributes($attributes) .'>';
+    $output = '';
+
+    // Treat the heading first if it is present to prepend it to the
+    // list of links.
+    if (!empty($heading)) {
+      if (is_string($heading)) {
+        // Prepare the array that will be used when the passed heading
+        // is a string.
+        $heading = array(
+          'text' => $heading,
+          // Set the default level of the heading.
+          'level' => 'h2',
+        );
+      }
+      $output .= '<' . $heading['level'];
+      if (!empty($heading['class'])) {
+        $output .= drupal_attributes(array('class' => $heading['class']));
+      }
+      $output .= '>' . check_plain($heading['text']) . '</' . $heading['level'] . '>';
+    }
+
+    $output .= '<ul' . drupal_attributes($attributes) . '>';
 
     $num_links = count($links);
     $i = 1;
 
     foreach ($links as $key => $link) {
-      $class = '';
+      $class = array($key);
 
-      // Automatically add a class to each link and also to each LI
-      if (isset($link['attributes']) && isset($link['attributes']['class'])) {
-        $link['attributes']['class'] .= ' ' . $key;
-        $class = $key;
-      }
-      else {
-        $link['attributes']['class'] = $key;
-        $class = $key;
-      }
-
-      // Add first and last classes to the list of links to help out themers.
-      $extra_class = '';
+      // Add first, last and active classes to the list of links to help out themers.
       if ($i == 1) {
-        $extra_class .= 'first ';
+        $class[] = 'first';
       }
       if ($i == $num_links) {
-        $extra_class .= 'last ';
+        $class[] = 'last';
       }
-	  
-	 
-	  // Add class active to active li 
-	  $current = '';
-	  if (strstr($class, 'active')) {
-	    $current = ' active';
-	  }	
-
-	  $output .= '<li class="'. $extra_class . $class . $current .'"><span>';
-	  
-	  // Is the title HTML?
-      $html = isset($link['html']) && $link['html'];
-
-      // Initialize fragment and query variables.
-      $link['query'] = isset($link['query']) ? $link['query'] : NULL;
-      $link['fragment'] = isset($link['fragment']) ? $link['fragment'] : NULL;
+      if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))
+          && (empty($link['language']) || $link['language']->language == $language_url->language)) {
+        $class[] = 'active';
+      }
+      $output .= '<li' . drupal_attributes(array('class' => $class)) . '><span>';
 
       if (isset($link['href'])) {
-        $output .= l($link['title'], $link['href'], $link['attributes'], $link['query'], $link['fragment'], FALSE, $html);
+        // Pass in $link as $options, they share the same keys.
+        $output .= l($link['title'], $link['href'], $link);
       }
-      else if ($link['title']) {
-        //Some links are actually not links, but we wrap these in <span> for adding title and class attributes
-        if (!$html) {
+      elseif (!empty($link['title'])) {
+        // Some links are actually not links, but we wrap these in <span> for adding title and class attributes.
+        if (empty($link['html'])) {
           $link['title'] = check_plain($link['title']);
         }
-        $output .= '<span'. drupal_attributes($link['attributes']) .'>'. $link['title'] .'</span>';
+        $span_attributes = '';
+        if (isset($link['attributes'])) {
+          $span_attributes = drupal_attributes($link['attributes']);
+        }
+        $output .= '<span' . $span_attributes . '>' . $link['title'] . '</span>';
       }
 
       $i++;
@@ -159,4 +118,4 @@ function phptemplate_linksnew($links, $attributes = array('class' => 'links')) {
   return $output;
 }
 
-?>
+

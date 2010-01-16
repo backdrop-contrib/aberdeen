@@ -1,0 +1,13 @@
+; $Id$
+
+name = Aberdeen-liquid
+description = Aberdeen liquid theme, for a fluid layout.
+core = 7.x
+engine = phptemplate
+base theme = aberdeen
+
+; The screenshot used on the admin/appearance page.
+screenshot = screenshot.png
+
+; Add the liquid layout styles
+stylesheets[all][] = style.css
