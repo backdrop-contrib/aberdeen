@@ -11,6 +11,9 @@ List of features
 * Coded with SEO in mind, the order of the columns are 2dn, 3rd and 1st - usually the 1st is intended for navigation, the other two for content, Google likes that.
 * Slinding doors tabs for primary links that blend with main content area.
 
+Notes
+ * If you want to place a menu in the header region uncomment out the CSS in the style.css file
+
 1. Aberdeen Layout
 
 If all columns are enabled, the visual layout is divided in four equal columns, with the center one taking twice the width of the sidebars.

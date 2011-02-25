@@ -1,120 +1,75 @@
 <?php
+// $Id$
 
 /**
- * Custom Breadcrumb
- */
-function aberdeen_breadcrumb($breadcrumb) {
-  // Determine if we are to display the breadcrumb.
-  $show_breadcrumb = theme_get_setting('aberdeen_breadcrumb');
-  if ($show_breadcrumb == 'yes' || $show_breadcrumb == 'admin' && arg(0) == 'admin') {
+ * Uncomment to use load an Internet Explorer CSS file
+ * You will need to manually create this file if you uncomment this function
+function aberdeen_preprocess_html(&$variables) {
+  // Add conditional stylesheets for IE
+  drupal_add_css(path_to_theme() . '/ie.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE', '!IE' => FALSE), 'preprocess' => FALSE));
+  
+}
+*/
 
-    // Return the breadcrumb with separators.
-    if (!empty($breadcrumb)) {
-      $breadcrumb_separator = theme_get_setting('aberdeen_breadcrumb_separator');
-      $trailing_separator = $title = '';
-      if (theme_get_setting('aberdeen_breadcrumb_title')) {
-        $trailing_separator = $breadcrumb_separator;
-        $title = menu_get_active_title();
-      }
-      elseif (theme_get_setting('aberdeen_breadcrumb_trailing')) {
-        $trailing_separator = $breadcrumb_separator;
-      }
-      return '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . "$trailing_separator$title</div>";
-    }
+/**
+ * Override or insert variables into the page template.
+ */
+function aberdeen_process_page(&$variables) {
+
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  if (!empty($variables['title_suffix']['add_or_remove_shortcut']) && $variables['title']) {
+    // Add a wrapper div using the title_prefix and title_suffix render elements.
+    $variables['title_prefix']['shortcut_wrapper'] = array(
+      '#markup' => '<div class="shortcut-wrapper clearfix">',
+      '#weight' => 100,
+    );
+    $variables['title_suffix']['shortcut_wrapper'] = array(
+      '#markup' => '</div>',
+      '#weight' => -99,
+    );
+    // Make sure the shortcut link is the first item in title_suffix.
+    $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
-  // Otherwise, return an empty string.
-  return '';
 }
 
 /**
- * Allow themable wrapping of all comments.
+ * Implements theme_breadcrumb.
  */
-function aberdeen_comment_wrapper($content, $type = null) {
-  static $node_type;
-  if (isset($type)) $node_type = $type;
+function aberdeen_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+	$title = strip_tags(drupal_get_title());
 
-  if (!$content || $node_type == 'forum') {
-    return '<div id="comments">'. $content . '</div>';
-  }
-  else {
-    return '<div id="comments"><h2 class="comments">'. t('Comments') .'</h2>'. $content .'</div>';
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    $output .= '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title . '</div>';
+    return $output;
   }
 }
 
-function aberdeen_links($variables) {
-  $links = $variables['links'];
-  $attributes = $variables['attributes'];
-  $heading = $variables['heading'];
-  global $language_url;
+/**
+ * Implements theme_field__field_type().
+ */
+function aberdeen_field__taxonomy_term_reference($variables) {
   $output = '';
 
-  if (count($links) > 0) {
-    $output = '';
-
-    // Treat the heading first if it is present to prepend it to the
-    // list of links.
-    if (!empty($heading)) {
-      if (is_string($heading)) {
-        // Prepare the array that will be used when the passed heading
-        // is a string.
-        $heading = array(
-          'text' => $heading,
-          // Set the default level of the heading.
-          'level' => 'h2',
-        );
-      }
-      $output .= '<' . $heading['level'];
-      if (!empty($heading['class'])) {
-        $output .= drupal_attributes(array('class' => $heading['class']));
-      }
-      $output .= '>' . check_plain($heading['text']) . '</' . $heading['level'] . '>';
-    }
-
-    $output .= '<ul' . drupal_attributes($attributes) . '>';
-
-    $num_links = count($links);
-    $i = 1;
-
-    foreach ($links as $key => $link) {
-      $class = array($key);
-
-      // Add first, last and active classes to the list of links to help out themers.
-      if ($i == 1) {
-        $class[] = 'first';
-      }
-      if ($i == $num_links) {
-        $class[] = 'last';
-      }
-      if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))
-          && (empty($link['language']) || $link['language']->language == $language_url->language)) {
-        $class[] = 'active';
-      }
-      $output .= '<li' . drupal_attributes(array('class' => $class)) . '><span>';
-
-      if (isset($link['href'])) {
-        // Pass in $link as $options, they share the same keys.
-        $output .= l($link['title'], $link['href'], $link);
-      }
-      elseif (!empty($link['title'])) {
-        // Some links are actually not links, but we wrap these in <span> for adding title and class attributes.
-        if (empty($link['html'])) {
-          $link['title'] = check_plain($link['title']);
-        }
-        $span_attributes = '';
-        if (isset($link['attributes'])) {
-          $span_attributes = drupal_attributes($link['attributes']);
-        }
-        $output .= '<span' . $span_attributes . '>' . $link['title'] . '</span>';
-      }
-
-      $i++;
-      $output .= "</span></li>\n";
-    }
-
-    $output .= '</ul>';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    $output .= '<h3 class="field-label">' . $variables['label'] . ': </h3>';
   }
+
+  // Render the items.
+  $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
+  }
+  $output .= '</ul>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
 
   return $output;
 }
-
-
