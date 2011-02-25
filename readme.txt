@@ -1,4 +1,3 @@
-$Id$ 
 
 Aberdeen is a fresh design that balances simplicity, soft, neutral background colors, plenty of whitespace and big nice typography.
 
