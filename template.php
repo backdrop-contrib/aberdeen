@@ -1,5 +1,13 @@
 <?php
-// $Id$
+/**
+ * @file
+ * PHP functions for Aberdeen Backdrop theme.
+ */
+
+/********** Alter Functions ***************************************************/
+
+
+/********** Preprocess Functions **********************************************/
 
 /**
  * Uncomment to use load an Internet Explorer CSS file
@@ -7,7 +15,7 @@
 function aberdeen_preprocess_html(&$variables) {
   // Add conditional stylesheets for IE
   drupal_add_css(path_to_theme() . '/ie.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE', '!IE' => FALSE), 'preprocess' => FALSE));
-  
+
 }
 */
 
@@ -32,6 +40,8 @@ function aberdeen_process_page(&$variables) {
     $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
 }
+
+/********** Theme Functions ***************************************************/
 
 /**
  * Implements theme_breadcrumb.
