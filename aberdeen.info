@@ -1,9 +1,9 @@
 
 ; The name and description of the theme used on the admin/appearance.
+type        = theme
 name        = Aberdeen
 description = Aberdeen is a fresh design that balances simplicity, soft, neutral background colors, plenty of whitespace and big nice typography
-core        = 7.x
-engine      = phptemplate
+backdrop    = 1.x
 
 ; The screenshot used on the admin/appearance page.
 screenshot = images/screenshot.png
@@ -11,14 +11,14 @@ screenshot = images/screenshot.png
 stylesheets[all][]   = style.css
 stylesheets[print][] = print.css
 
-regions[header]          = Header
-regions[highlight]       = Highlight
-regions[help]            = Help
-regions[highlighted]     = Highlighted
-regions[content]         = Content
-regions[sidebar_first]   = Left Sidebar 
-regions[sidebar_second]  = Right Sidebar
-regions[footer]          = Footer
+;regions[header]          = Header
+;regions[highlight]       = Highlight
+;regions[help]            = Help
+;regions[highlighted]     = Highlighted
+;regions[content]         = Content
+;regions[sidebar_first]   = Left Sidebar
+;regions[sidebar_second]  = Right Sidebar
+;regions[footer]          = Footer
 
 
 
