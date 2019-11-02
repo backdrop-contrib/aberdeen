@@ -10,14 +10,20 @@
 /********** Preprocess Functions **********************************************/
 
 /**
- * Uncomment to use load an Internet Explorer CSS file
- * You will need to manually create this file if you uncomment this function
-function aberdeen_preprocess_html(&$variables) {
-  // Add conditional stylesheets for IE
-  drupal_add_css(path_to_theme() . '/ie.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE', '!IE' => FALSE), 'preprocess' => FALSE));
+ * Prepare variables for all page templates.
+ * @see page.tpl.php
+ */
+function aberdeen_preprocess_page(&$variables) {
+  $options = array(
+    'group' => CSS_THEME,
+    'browsers' => array('IE' => 'IE', '!IE' => FALSE),
+    'preprocess' => FALSE,
+  );
 
+  // Uncomment to Add conditional stylesheets for IE.
+  // You will need to manually create this file if you uncomment this function.
+  //drupal_add_css(path_to_theme() . '/ie.css', $options);
 }
-*/
 
 /**
  * Override or insert variables into the page template.
