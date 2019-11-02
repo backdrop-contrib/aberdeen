@@ -41,6 +41,10 @@
   <div id="wrapper-main" class="l-wrapper">
     <div id="main" class="l-wrapper-inner container container-fluid">
 
+      <?php if ($site_slogan): ?>
+      <h2 id='site-slogan'><?php print $site_slogan; ?></h2>
+      <?php endif; ?>
+
       <div class="l-middle row">
         <main id="content" class="l-content col-md-6 col-md-push-3" role="main" aria-label="<?php print t('Main content'); ?>">
           <?php if (!empty($content['top'])): ?>

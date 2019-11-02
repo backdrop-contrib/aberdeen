@@ -42,6 +42,15 @@ function aberdeen_process_page(&$variables) {
 }
 
 /**
+ * Override or insert variables into the layout templates.
+ */
+function aberdeen_preprocess_layout(&$variables) {
+  // Add the slogan to all layout templates.
+  $site_config = config('system.core');
+  $variables['site_slogan'] = filter_xss_admin($site_config->getTranslated('site_slogan'));
+}
+
+/**
  * Override or insert variables for the menu_tree theme function.
  */
 function aberdeen_preprocess_menu_tree(&$variables) {
