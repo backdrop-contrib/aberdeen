@@ -40,23 +40,6 @@
   <div id="wrapper-main" class="l-wrapper">
     <div id="main" class="l-wrapper-inner container container-fluid">
 
-      <div class="l-page-title">
-        <a id="main-content"></a>
-        <?php print render($title_prefix); ?>
-        <?php if ($title): ?>
-          <h1 class="page-title"><?php print $title; ?></h1>
-        <?php endif; ?>
-        <?php print render($title_suffix); ?>
-      </div>
-
-      <?php if ($tabs): ?>
-        <nav class="tabs" role="tablist" aria-label="<?php print t('Admin content navigation tabs.'); ?>">
-          <?php print $tabs; ?>
-        </nav>
-      <?php endif; ?>
-
-      <?php print $action_links; ?>
-
       <div class="l-middle row">
         <main id="content" class="l-content col-md-6 col-md-push-3" role="main" aria-label="<?php print t('Main content'); ?>">
           <?php if (!empty($content['top'])): ?>
@@ -64,6 +47,23 @@
               <?php print $content['top']; ?>
             </div>
           <?php endif; ?>
+
+          <div class="l-page-title">
+            <a id="main-content"></a>
+            <?php print render($title_prefix); ?>
+            <?php if ($title): ?>
+              <h1 class="page-title"><?php print $title; ?></h1>
+            <?php endif; ?>
+            <?php print render($title_suffix); ?>
+          </div>
+
+          <?php if ($tabs): ?>
+            <nav class="tabs" role="tablist" aria-label="<?php print t('Admin content navigation tabs.'); ?>">
+              <?php print $tabs; ?>
+            </nav>
+          <?php endif; ?>
+
+          <?php print $action_links; ?>
 
           <?php if ($messages): ?>
             <div class="l-messages" role="status" aria-label="<?php print t('Status messages'); ?>">
