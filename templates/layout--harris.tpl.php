@@ -30,15 +30,15 @@
   </div>
 
   <?php if ($content['header']): ?>
-    <header class="l-header" role="banner" aria-label="<?php print t('Site header'); ?>">
-      <div class="l-header-inner container container-fluid">
+    <header id="wrapper-header" class="l-header" role="banner" aria-label="<?php print t('Site header'); ?>">
+      <div id="header" class="l-header-inner container container-fluid">
         <?php print $content['header']; ?>
       </div>
     </header>
   <?php endif; ?>
 
-  <div class="l-wrapper">
-    <div class="l-wrapper-inner container container-fluid">
+  <div id="wrapper-main" class="l-wrapper">
+    <div id="main" class="l-wrapper-inner container container-fluid">
 
       <?php if ($messages): ?>
         <div class="l-messages" role="status" aria-label="<?php print t('Status messages'); ?>">
@@ -70,13 +70,13 @@
       <?php endif; ?>
 
       <div class="l-middle row">
-        <main class="l-content col-md-6 col-md-push-3" role="main" aria-label="<?php print t('Main content'); ?>">
+        <main id="content" class="l-content col-md-6 col-md-push-3" role="main" aria-label="<?php print t('Main content'); ?>">
           <?php print $content['content']; ?>
         </main>
-        <div class="l-sidebar l-sidebar-first col-md-3 col-md-pull-6">
+        <div id="sidebar-first" class="l-sidebar l-sidebar-first col-md-3 col-md-pull-6">
           <?php print $content['sidebar']; ?>
         </div>
-        <div class="l-sidebar l-sidebar-second col-md-3">
+        <div id="sidebar-second" class="l-sidebar l-sidebar-second col-md-3">
           <?php print $content['sidebar2']; ?>
         </div>
       </div><!-- /.l-middle -->
@@ -91,7 +91,7 @@
   </div><!-- /.l-wrapper -->
 
   <?php if ($content['footer']): ?>
-    <footer class="l-footer"  role="footer">
+    <footer id="footer" class="l-footer"  role="footer">
       <div class="l-footer-inner container container-fluid">
         <?php print $content['footer']; ?>
       </div>
