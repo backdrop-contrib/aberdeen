@@ -41,6 +41,19 @@ function aberdeen_process_page(&$variables) {
   }
 }
 
+/**
+ * Override or insert variables for the menu_tree theme function.
+ */
+function aberdeen_preprocess_menu_tree(&$variables) {
+  if ($variables['attributes']['data-menu-style'] == 'tree') {
+    // Remove the menu-tree class from the menus.
+    $key = array_search('menu-tree', $variables['attributes']['class']);
+    if ($key !== FALSE) {
+      unset($variables['attributes']['class'][$key]);
+    }
+  }
+}
+
 /********** Theme Functions ***************************************************/
 
 /**
