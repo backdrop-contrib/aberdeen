@@ -88,13 +88,14 @@
       <?php endif; ?>
 
     </div><!-- /.l-wrapper-inner -->
-  </div><!-- /.l-wrapper -->
 
-  <?php if ($content['footer']): ?>
-    <footer id="footer" class="l-footer"  role="footer">
-      <div class="l-footer-inner container container-fluid">
-        <?php print $content['footer']; ?>
-      </div>
-    </footer>
-  <?php endif; ?>
+    <?php if ($content['footer']): ?>
+      <footer id="footer" class="l-footer"  role="footer">
+        <div class="l-footer-inner container container-fluid">
+          <?php print $content['footer']; ?>
+        </div>
+      </footer>
+    <?php endif; ?>
+
+  </div><!-- /.l-wrapper -->
 </div><!-- /.layout--harris -->
