@@ -28,6 +28,7 @@
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>
+  <a id="top"></a>
 
   <?php if ($content['header']): ?>
     <header id="wrapper-header" class="l-header" role="banner" aria-label="<?php print t('Site header'); ?>">
@@ -48,11 +49,15 @@
             </div>
           <?php endif; ?>
 
+          <?php if ($tabs): print '<div id="tabs-wrapper" class="clear">'; endif; ?>
+
           <div class="l-page-title">
             <a id="main-content"></a>
             <?php print render($title_prefix); ?>
             <?php if ($title): ?>
-              <h1 class="page-title"><?php print $title; ?></h1>
+              <h1 class="page-title<?php if ($tabs): print ' with-tabs'; endif; ?>">
+                <?php print $title; ?>
+              </h1>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
           </div>
@@ -63,6 +68,8 @@
             </nav>
           <?php endif; ?>
 
+          <?php if ($tabs): print '</div>'; endif; ?>
+
           <?php print $action_links; ?>
 
           <?php if ($messages): ?>
@@ -72,6 +79,7 @@
           <?php endif; ?>
 
           <?php print $content['content']; ?>
+          </div>
         </main>
         <div id="sidebar-first" class="l-sidebar l-sidebar-first col-md-3 col-md-pull-6">
           <?php print $content['sidebar']; ?>
@@ -92,6 +100,7 @@
     <?php if ($content['footer']): ?>
       <footer id="footer" class="l-footer"  role="footer">
         <div class="l-footer-inner container container-fluid">
+          <p><a href="#top" class="to-top"><?php print t('Back to top'); ?></a></p>
           <?php print $content['footer']; ?>
         </div>
       </footer>
