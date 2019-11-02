@@ -22,6 +22,11 @@ function aberdeen_preprocess_page(&$variables) {
   // Uncomment to Add conditional stylesheets for IE.
   // You will need to manually create this file if you uncomment this function.
   // backdrop_add_css(path_to_theme() . '/ie.css', $options);
+
+  // Add the not-front class to the body tag.
+  if (!backdrop_is_front_page()) {
+    $variables['classes'][] = 'not-front';
+  }
 }
 
 /**
