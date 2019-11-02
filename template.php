@@ -22,7 +22,7 @@ function aberdeen_preprocess_page(&$variables) {
 
   // Uncomment to Add conditional stylesheets for IE.
   // You will need to manually create this file if you uncomment this function.
-  //drupal_add_css(path_to_theme() . '/ie.css', $options);
+  // backdrop_add_css(path_to_theme() . '/ie.css', $options);
 }
 
 /**
@@ -76,7 +76,7 @@ function aberdeen_preprocess_menu_tree(&$variables) {
  */
 function aberdeen_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
-	$title = strip_tags(drupal_get_title());
+	$title = strip_tags(backdrop_get_title());
 
   if (!empty($breadcrumb)) {
     // Provide a navigational heading to give context for breadcrumb links to
@@ -102,7 +102,7 @@ function aberdeen_field__taxonomy_term_reference($variables) {
   // Render the items.
   $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
   foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
+    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . backdrop_render($item) . '</li>';
   }
   $output .= '</ul>';
 
