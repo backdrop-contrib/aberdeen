@@ -25,7 +25,8 @@ function aberdeen_preprocess_page(&$variables) {
 }
 
 /**
- * Override or insert variables into the layout templates.
+ * Prepare variables for the layout templates.
+ * @see layout.tpl.php
  */
 function aberdeen_preprocess_layout(&$variables) {
   // Add the slogan to all layout templates.
@@ -34,10 +35,12 @@ function aberdeen_preprocess_layout(&$variables) {
 }
 
 /**
- * Override or insert variables for the menu_tree theme function.
+ * Prepare variables for the menu_tree theme function.
+ * @see theme_menu_tree()
  */
 function aberdeen_preprocess_menu_tree(&$variables) {
-  if ($variables['attributes']['data-menu-style'] == 'tree') {
+  $style_set = isset($variables['attributes']['data-menu-style']);
+  if ($style_set && $variables['attributes']['data-menu-style'] == 'tree') {
     // Remove the menu-tree class from the menus.
     $key = array_search('menu-tree', $variables['attributes']['class']);
     if ($key !== FALSE) {
@@ -53,14 +56,16 @@ function aberdeen_preprocess_menu_tree(&$variables) {
  */
 function aberdeen_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
-	$title = strip_tags(backdrop_get_title());
+  $title = strip_tags(backdrop_get_title());
 
   if (!empty($breadcrumb)) {
     // Provide a navigational heading to give context for breadcrumb links to
     // screen-reader users. Make the heading invisible with .element-invisible.
     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
-    $output .= '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title . '</div>';
+    $output .= '<div class="breadcrumb">';
+    $output .= implode(' &raquo; ', $breadcrumb) . ' &raquo; ' . $title;
+    $output .= '</div>';
     return $output;
   }
 }
@@ -79,12 +84,16 @@ function aberdeen_field__taxonomy_term_reference($variables) {
   // Render the items.
   $output .= ($variables['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
   foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>' . backdrop_render($item) . '</li>';
+    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $variables['item_attributes'][$delta] . '>';
+    $output .= backdrop_render($item);
+    $output .= '</li>';
   }
   $output .= '</ul>';
 
   // Render the top-level DIV.
-  $output = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">' . $output . '</div>';
+  $output  = '<div class="' . $variables['classes'] . (!in_array('clearfix', $variables['classes_array']) ? ' clearfix' : '') . '">';
+  $output .= $output;
+  $output .= '</div>';
 
   return $output;
 }
