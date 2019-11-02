@@ -63,14 +63,14 @@
 
       <?php print $action_links; ?>
 
-      <?php if (!empty($content['top'])): ?>
-        <div class="l-top">
-          <?php print $content['top']; ?>
-        </div>
-      <?php endif; ?>
-
       <div class="l-middle row">
         <main id="content" class="l-content col-md-6 col-md-push-3" role="main" aria-label="<?php print t('Main content'); ?>">
+          <?php if (!empty($content['top'])): ?>
+            <div class="l-top">
+              <?php print $content['top']; ?>
+            </div>
+          <?php endif; ?>
+
           <?php print $content['content']; ?>
         </main>
         <div id="sidebar-first" class="l-sidebar l-sidebar-first col-md-3 col-md-pull-6">
