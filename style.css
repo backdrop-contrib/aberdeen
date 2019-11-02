@@ -251,7 +251,7 @@ table .form-submit {
  */
 #wrapper-header {
   background: #f9f7ed url(images/bg-header.gif) repeat-x left bottom;
-  margin-top: 25px;
+  padding-top: 25px;
 }
 #header {
   width: 60em;
