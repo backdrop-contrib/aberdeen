@@ -49,36 +49,40 @@
             </div>
           <?php endif; ?>
 
-          <?php if ($tabs): print '<div id="tabs-wrapper" class="clear">'; endif; ?>
+          <div id="content">
+            <div id="center">
 
-          <div class="l-page-title">
-            <a id="main-content"></a>
-            <?php print render($title_prefix); ?>
-            <?php if ($title): ?>
-              <h1 class="page-title<?php if ($tabs): print ' with-tabs'; endif; ?>">
-                <?php print $title; ?>
-              </h1>
-            <?php endif; ?>
-            <?php print render($title_suffix); ?>
-          </div>
+              <?php if ($tabs): print '<div id="tabs-wrapper" class="clear">'; endif; ?>
 
-          <?php if ($tabs): ?>
-            <nav class="tabs" role="tablist" aria-label="<?php print t('Admin content navigation tabs.'); ?>">
-              <?php print $tabs; ?>
-            </nav>
-          <?php endif; ?>
+              <div class="l-page-title">
+                <a id="main-content"></a>
+                <?php print render($title_prefix); ?>
+                <?php if ($title): ?>
+                  <h1 class="page-title<?php if ($tabs): print ' with-tabs'; endif; ?>">
+                    <?php print $title; ?>
+                  </h1>
+                <?php endif; ?>
+                <?php print render($title_suffix); ?>
+              </div>
 
-          <?php if ($tabs): print '</div>'; endif; ?>
+              <?php if ($tabs): ?>
+                <nav class="tabs" role="tablist" aria-label="<?php print t('Admin content navigation tabs.'); ?>">
+                  <?php print $tabs; ?>
+                </nav>
+              <?php endif; ?>
 
-          <?php print $action_links; ?>
+              <?php if ($tabs): print '</div>'; endif; ?>
 
-          <?php if ($messages): ?>
-            <div class="l-messages" role="status" aria-label="<?php print t('Status messages'); ?>">
-              <?php print $messages; ?>
+              <?php print $action_links; ?>
+
+              <?php if ($messages): ?>
+                <div class="l-messages" role="status" aria-label="<?php print t('Status messages'); ?>">
+                  <?php print $messages; ?>
+                </div>
+              <?php endif; ?>
+
+              <?php print $content['content']; ?>
             </div>
-          <?php endif; ?>
-
-          <?php print $content['content']; ?>
           </div>
         </main>
         <div id="sidebar-first" class="l-sidebar l-sidebar-first col-md-3 col-md-pull-6">
