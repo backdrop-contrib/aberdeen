@@ -1,8 +1,5 @@
-/* $Id:$ */
-
 /**
  * General.
- *
  */
 body, div, h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, li, dl, dd, hr, address {
   padding:0;
@@ -13,7 +10,7 @@ body, div, h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, li, dl, dd
 body {
   font: 1em/1.5em "Adobe Caslon Pro","Hoefler Text", Georgia, Garamond, Times, serif;
   color: #444242;
-  background: #fff url(images/bg-body.gif) repeat-x 0 0;
+  background: #fff url(../images/bg-body.gif) repeat-x 0 0;
   text-align: center;
 }
 input {
@@ -110,13 +107,13 @@ li.leaf {
   padding: 0 0 .2em 1.5em;
   list-style-type: none;
   list-style-image: none;
-  background: transparent url(images/menu-leaf.gif) no-repeat 0 .25em;
+  background: transparent url(../images/menu-leaf.gif) no-repeat 0 .25em;
 }
 ul li.expanded {
-  background: transparent url(images/menu-expanded.gif) no-repeat 0 .25em;
+  background: transparent url(../images/menu-expanded.gif) no-repeat 0 .25em;
 }
 ul li.collapsed {
-  background: transparent url(images/menu-collapsed.gif) no-repeat 0 .25em;
+  background: transparent url(../images/menu-collapsed.gif) no-repeat 0 .25em;
 }
 ul li.leaf a,
 ul li.expanded a,
@@ -250,7 +247,7 @@ table .form-submit {
  * Layout.
  */
 #wrapper-header {
-  background: #f9f7ed url(images/bg-header.gif) repeat-x left bottom;
+  background: #f9f7ed url(../images/bg-header.gif) repeat-x left bottom;
   padding-top: 25px;
 }
 #header {
@@ -259,7 +256,7 @@ table .form-submit {
   height: 5em;
   position: relative;
   text-align: left;
-  background: #f9f7ed url(images/bg-header.gif) repeat-x left bottom;
+  background: #f9f7ed url(../images/bg-header.gif) repeat-x left bottom;
 }
 #header-block {
   position: absolute;
@@ -269,13 +266,13 @@ table .form-submit {
   height: 1.6em;
 }
 #wrapper-main {
-  background: #fff url(images/bg-main.gif) repeat-x 0 0;
+  background: #fff url(../images/bg-main.gif) repeat-x 0 0;
   overflow-y: hidden;
 }
 #main {
   padding-top: 1.6em;
   text-align: left;
-  background: #fff url(images/bg-main.gif) repeat-x 0 0;
+  background: #fff url(../images/bg-main.gif) repeat-x 0 0;
 }
 #topbar {
   min-height: 1em;
@@ -327,10 +324,10 @@ h2#site-slogan {
   display: inline;
   float: left;
   margin: 0 0.2em 1px;
-  background: url(images/bg-header-tab-left.gif) no-repeat left top;
+  background: url(../images/bg-header-tab-left.gif) no-repeat left top;
 }
 .js ul.menu-dropdown li.active {
-  background: url(images/bg-header-tab-left-active.gif) no-repeat left top;
+  background: url(../images/bg-header-tab-left-active.gif) no-repeat left top;
 }
 .js ul.menu-dropdown li,
 .js ul.menu-dropdown li {
@@ -338,12 +335,12 @@ h2#site-slogan {
   padding:0;
   display: block;
   float: left;
-  background: url(images/bg-header-tab-left.gif) no-repeat left top;
+  background: url(../images/bg-header-tab-left.gif) no-repeat left top;
 }
 .js ul.menu-dropdown li a,
 .js ul.menu-dropdown li a:link,
 .js ul.menu-dropdown li a:visited  {
-  background: url(images/bg-header-tab-right.gif) no-repeat right top;
+  background: url(../images/bg-header-tab-right.gif) no-repeat right top;
   color: #fff;
   display: block;
   padding: 0.25em 0.5em;
@@ -356,7 +353,7 @@ h2#site-slogan {
 }
 .js ul.menu-dropdown li.active a,
 #header .js ul.menu-dropdown li.active a {
-  background: url(images/bg-header-tab-right-active.gif) no-repeat right top;
+  background: url(../images/bg-header-tab-right-active.gif) no-repeat right top;
   color: #555;
 }
 .js ul.menu-dropdown li.active a:active,
@@ -453,7 +450,7 @@ ul.secondary li.active a,
 ul.secondary li.active a:link,
 ul.secondary li.active a:visited,
 ul.secondary li a:hover {
-  background: #b6e42e url(images/bg-content-tab.gif) repeat-x 0 0;
+  background: #b6e42e url(../images/bg-content-tab.gif) repeat-x 0 0;
   color: #fff;
   border-bottom: 1px solid #b1de2e;
 }
@@ -465,7 +462,7 @@ ul.secondary li.active a {
   margin: 0 0 1.3em 0;
 }
 .admin-panel {
-  background: #fff url(images/bg-admin-panel.gif) repeat-x left top;
+  background: #fff url(../images/bg-admin-panel.gif) repeat-x left top;
   margin-bottom: 1.8em;
 }
 .admin-panel h3 {
@@ -488,7 +485,7 @@ div.admin .right {
   float: right;
 }
 div.admin h3 {
-  background: url(images/ico-settings.gif) no-repeat 0% 50%;
+  background: url(../images/ico-settings.gif) no-repeat 0% 50%;
   padding-left: 26px;
 }
 #first-time {
@@ -502,13 +499,13 @@ table.system-status-report th {
   border-bottom: 1px solid #e5e5e5;
 }
 table.system-status-report tr.error th {
-  background-image: url(images/watchdog-error.gif);
+  background-image: url(../images/watchdog-error.gif);
 }
 table.system-status-report tr.warning th {
-  background-image: url(images/watchdog-warning.gif);
+  background-image: url(../images/watchdog-warning.gif);
 }
 table.system-status-report tr.ok th {
-  background-image: url(images/watchdog-ok.gif);
+  background-image: url(../images/watchdog-ok.gif);
 }
 
 /**
@@ -516,7 +513,7 @@ table.system-status-report tr.ok th {
  */
 #sidebar-first .block,
 #sidebar-second .block {
-  background: #f8f8f8 url(images/bg-block.gif) repeat-x left top;
+  background: #f8f8f8 url(../images/bg-block.gif) repeat-x left top;
   border-bottom: 1px solid #eeeded;
   padding: 1.13em 0.56em 0.75em;
   margin-bottom: 1.6em;
@@ -665,12 +662,12 @@ td.menu-disabled {
  * Poll.module.
  */
 .poll .bar {
-  background: #fff url(images/bg-bar-white.png) repeat-x 0 0;
+  background: #fff url(../images/bg-bar-white.png) repeat-x 0 0;
   border: solid #f0f0f0;
   border-width: 0 1px 1px;
 }
 .poll .bar .foreground {
-  background: #b6e42e url(images/bg-bar.png) repeat-x 0 100%;
+  background: #b6e42e url(../images/bg-bar.png) repeat-x 0 100%;
 }
 .poll .percent {
   font-size: .9em;
@@ -704,10 +701,10 @@ html.js fieldset.collapsed {
 }
 html.js fieldset.collapsible legend a {
   padding-left: 2em;
-  background: url(images/menu-expanded.gif) no-repeat 0% 50%;
+  background: url(../images/menu-expanded.gif) no-repeat 0% 50%;
 }
 html.js fieldset.collapsed legend a {
-  background: url(images/menu-collapsed.gif) no-repeat 0% 50%;
+  background: url(../images/menu-collapsed.gif) no-repeat 0% 50%;
 }
 
 /**
@@ -766,7 +763,7 @@ div.error {
   width: 100%;
 }
 .to-top {
-  background: url(images/link-arrow-up.gif) no-repeat 0% 50%;
+  background: url(../images/link-arrow-up.gif) no-repeat 0% 50%;
   padding-left: 20px;
 }
 

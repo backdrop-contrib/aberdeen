@@ -8,17 +8,5 @@ backdrop    = 1.x
 ; The screenshot used on the admin/appearance page.
 screenshot = images/screenshot.png
 
-stylesheets[all][]   = style.css
-stylesheets[print][] = print.css
-
-;regions[header]          = Header
-;regions[highlight]       = Highlight
-;regions[help]            = Help
-;regions[highlighted]     = Highlighted
-;regions[content]         = Content
-;regions[sidebar_first]   = Left Sidebar
-;regions[sidebar_second]  = Right Sidebar
-;regions[footer]          = Footer
-
-
-
+stylesheets[all][]        = css/style.css
+stylesheets[print][]      = css/print.css
