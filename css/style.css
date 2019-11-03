@@ -210,11 +210,6 @@ td.menu-disabled {
   margin-bottom: 0.75em;
   color: #898989;
 }
-.messages,
-.preview {
-  margin: .75em 0 .75em;
-  padding: .5em 1em;
-}
 .messages ul {
   margin: 0;
 }
@@ -738,10 +733,14 @@ html.js fieldset.collapsed legend a {
 .messages {
   background-color: #fff;
   border: 1px solid #f0eacd;
+  margin: .75em 0 .75em;
+  padding: 0.9em 0.625em 0.75em 3.438em
 }
 .preview {
   background-color: #f9f7ed;
   border: 1px solid #d0d0d0;
+  margin: .75em 0 .75em;
+  padding: .5em 1em;
 }
 div.error {
   color: #c52020;
