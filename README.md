@@ -1,17 +1,72 @@
+Aberdeen
+========
 
 Aberdeen is a fresh design that balances simplicity, soft, neutral background colors, plenty of whitespace and big nice typography.
+
 
 List of features
 
 * Standards-compliant XHTML 1.0 Strict and CSS.
-* Liquid CSS layout (tableless) - the whole layout increases or decreases proportionally as dimensions are specified in ems. Try changing the font size to see this working.
-* Supports one, two and three columns.
 * Cross-browser compatible.
 * Cute icons (all GPL).
-* Coded with SEO in mind, the order of the columns are 2dn, 3rd and 1st - usually the 1st is intended for navigation, the other two for content, Google likes that.
+* Coded with SEO in mind.
 * Slinding doors tabs for primary links that blend with main content area.
 
+TODO:
+
+* add support for all layouts
+* Replace use of IDs with classes
+* Evaluate & port Liquid CSS layout
+
+Liquid CSS layout (tableless)
+- the whole layout increases or decreases proportionally as dimensions are
+  specified in ems. Try changing the font size to see this working.
+
+
+Installation
+------------
+
+- Install this theme using the official Backdrop CMS instructions at
+  https://backdropcms.org/guide/themes.
+
+Documentation
+-------------
+
+Additional documentation is located in the Wiki:
+https://github.com/backdrop-contrib/aberdeen/wiki/Documentation.
+
+Issues
+------
+
+Bugs and Feature requests should be reported in the Issue Queue:
+https://github.com/backdrop-contrib/aberdeen/issues.
+
+Current Maintainers
+-------------------
+
+- Jen Lampton (https://github.com/jenlampton).
+- Seeking Additional Maintainers
+
+Credits
+-------
+
+- Ported to Backdrop CMS by [Jen Lampton](https://github.com/jenlampton).
+- Maintained for Drupal by [Ishmael Sanchez](https://www.drupal.org/u/ishmael-sanchez).
+- Originally written for Drupal by [johnnybegood](https://drupal.org/u/johnnybegood).
+
+License
+-------
+
+This project is GPL v2 software. See the LICENSE.txt file in this directory for
+complete text.
+
+
+
+
+
 Notes
+-------
+
  * If you want to place a menu in the header region uncomment out the CSS in the style.css file
 
 1. Aberdeen Layout
@@ -20,7 +75,7 @@ If all columns are enabled, the visual layout is divided in four equal columns, 
 
 For SEO the order in the HTML is re-arranged by the stylesheet.
 
-Note the HTML structure - if one column changes its width it affects the other ones. 
+Note the HTML structure - if one column changes its width it affects the other ones.
 
 |------------------------------#main------------------------------------|
 |-------------------#content---------------------||----#sidebar_left----|
