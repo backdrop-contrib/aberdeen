@@ -1,7 +1,7 @@
 /**
  * General.
  */
-body, div, h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, li, dl, dd, hr, address {
+body, h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, li, dl, dd, hr, address {
   padding:0;
   margin:0;
   font-weight: normal;
@@ -12,6 +12,7 @@ body {
   color: #444242;
   background: #fff url(../images/bg-body.gif) repeat-x 0 0;
   text-align: center;
+  min-width: 300px;
 }
 input {
   font: 0.86em/1.43em Verdana, sans-serif;
@@ -243,12 +244,9 @@ table .form-submit {
  */
 #wrapper-header {
   background: #f9f7ed url(../images/bg-header.gif) repeat-x left bottom;
-  padding-top: 25px;
 }
 #header {
-  width: 60em;
-  margin: 0 auto;
-  height: 5em;
+  min-height: 5em;
   position: relative;
   text-align: left;
   background: #f9f7ed url(../images/bg-header.gif) repeat-x left bottom;
@@ -271,12 +269,6 @@ table .form-submit {
 }
 #topbar {
   min-height: 1em;
-}
-#sidebar-first {
-  margin-top: 2.2em;
-}
-#sidebar-second {
-  margin-top: 2.2em;
 }
 
 #footer {
@@ -304,8 +296,10 @@ table .form-submit {
   margin-top: -0.2em;
 }
 h2#site-slogan {
-  font-weight:bold;
-  text-align:center;
+  font-weight: bold;
+  text-align: center;
+  padding: .33em;
+  margin-bottom: .66em;
 }
 .js ul.menu-dropdown {
   margin: 0;
@@ -413,6 +407,9 @@ ul.secondary {
   border-bottom: 1px solid #e9eff3;
   padding:1em 0 1.2em;
   margin-bottom: 1.2em;
+}
+nav.header-menu {
+  display: none;
 }
 nav.header-menu ul.links li,
 #wrapper-main .links li {
@@ -797,3 +794,4 @@ body#tinymce {
 .contextual-links li {
   background: none;
 }
+

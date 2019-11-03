@@ -1,0 +1,38 @@
+@media (min-width: 48em) {  /* 768px @ 16px font size  -- MD */
+
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 140%;
+    line-height: 110%;
+  }
+  h3 {
+    font-size: 120%;
+    line-height: 110%;
+  }
+  h4 {
+    font-size: 110%;
+  }
+  h5 {
+    font-size: 100%;
+  }
+  h6 {
+    font-size: 90%;
+  }
+
+  #wrapper-header {
+    padding-top: 25px;
+  }
+
+  nav.header-menu {
+    display: block;
+  }
+
+  #sidebar-first {
+    margin-top: 2.2em;
+  }
+  #sidebar-second {
+    margin-top: 2.2em;
+  }
+}

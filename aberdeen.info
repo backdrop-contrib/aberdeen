@@ -9,4 +9,6 @@ backdrop    = 1.x
 screenshot = images/screenshot.png
 
 stylesheets[all][]        = css/style.css
+stylesheets[all][]        = css/style-md.css
+stylesheets[all][]        = css/style-lg.css
 stylesheets[print][]      = css/print.css
