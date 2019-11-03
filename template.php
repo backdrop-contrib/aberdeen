@@ -40,6 +40,21 @@ function aberdeen_preprocess_layout(&$variables) {
 }
 
 /**
+ * Prepare variables for the node templates.
+ * @see node.tpl.php
+ */
+function aberdeen_preprocess_node(&$variables) {
+  // Remove the "Add new comment" link on the teaser, or when the comment form
+  // is displayed.
+  if ($variables['teaser'] || !empty($variables['comments']['comment_form'])) {
+    unset($variables['content']['links']['comment']['#links']['comment-add']);
+  }
+
+  // Render the links early for a cleaner template file.
+  $variables['links'] = backdrop_render($variables['content']['links']);
+}
+
+/**
  * Prepare variables for the menu_tree theme function.
  * @see theme_menu_tree()
  */

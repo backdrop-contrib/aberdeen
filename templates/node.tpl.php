@@ -21,27 +21,12 @@
   <?php endif; ?>
 
   <div class="content"<?php print backdrop_attributes($content_attributes); ?>>
-    <?php
-      // We hide the links now so that we can render them later.
-      hide($content['links']);
-      print render($content);
-    ?>
+    <?php print render($content); ?>
   </div><!-- #content -->
 
-  <?php
-    // Remove the "Add new comment" link on the teaser page
-    // or if the comment form is being displayed on the same page.
-    if ($teaser || !empty($content['comments']['comment_form'])) {
-      unset($content['links']['comment']['#links']['comment-add']);
-    }
-    // Only display the wrapper div if there are links.
-    $links = render($content['links']);
-    if ($links):
-  ?>
-    <div class="links">
-      <?php print $links; ?>
-    </div>
-  <?php endif; ?>
+  <div class="links">
+    <?php print $links; ?>
+  </div>
 
   <?php if ($comments): ?>
     <section class="comments" id="comments">
