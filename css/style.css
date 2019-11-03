@@ -321,7 +321,7 @@ h2#site-slogan {
   margin: 0 0.2em 1px;
   background: url(../images/bg-header-tab-left.gif) no-repeat left top;
 }
-.js ul.menu-dropdown li.active {
+.js ul.menu-dropdown li.active-trail {
   background: url(../images/bg-header-tab-left-active.gif) no-repeat left top;
 }
 .js ul.menu-dropdown li,
@@ -346,14 +346,14 @@ h2#site-slogan {
   color: #9cc32a;
   text-decoration: none;
 }
-.js ul.menu-dropdown li.active a,
-#header .js ul.menu-dropdown li.active a {
+.js ul.menu-dropdown li.active-trail a,
+#header .js ul.menu-dropdown li.active-trail a {
   background: url(../images/bg-header-tab-right-active.gif) no-repeat right top;
   color: #555;
 }
-.js ul.menu-dropdown li.active a:active,
-#header .js ul.menu-dropdown li.active a.active,
-#header .js ul.menu-dropdown li.active a {
+.js ul.menu-dropdown li.active-trail a:active,
+#header .js ul.menu-dropdown li.active-trail a.active,
+#header .js ul.menu-dropdown li.active-trail a {
   color: #4c4f53;
 }
 /**
